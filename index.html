@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive NLP Workshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .concept-card {
+            transition: all 0.3s ease;
+        }
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .nav-link {
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #4f46e5;
+        }
+        /* CSS-based dropdown icon animation */
+        details[open] > summary svg {
+            transform: rotate(180deg);
+        }
+        summary svg {
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold text-gray-900">NLP Workshop</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#challenges" class="nav-link text-gray-600 font-medium">Challenges</a>
+                    <a href="#concepts" class="nav-link text-gray-600 font-medium">Concepts</a>
+                    <a href="#analyzer" class="nav-link text-gray-600 font-medium">Analyzer</a>
+                    <a href="#sentiment" class="nav-link text-gray-600 font-medium">Sentiment</a>
+                    <a href="#prompt-builder" class="nav-link text-gray-600 font-medium">Prompt Builder</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center pt-8 pb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Interactive NLP Workshop</h1>
+            <p class="mt-4 text-lg text-gray-600">Explore how Artificial Intelligence understands human language.</p>
+        </header>
+
+        <!-- Challenges in Human Language Section -->
+        <section id="challenges" class="mb-20 pt-16 -mt-16">
+             <h2 class="text-3xl font-bold text-center mb-10 flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Why is Human Language So Hard for AI?
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ambiguity Card -->
+                <div class="concept-card bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-semibold text-xl mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Ambiguity
+                    </h3>
+                    <p class="text-gray-600 mb-4">A sentence can have multiple meanings. The AI has to figure out the correct one from context.</p>
+                    <div class="p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p class="font-mono text-red-800">"I saw a man with a telescope."</p>
+                        <p class="text-sm text-red-600 mt-2">Who has the telescope? Me or the man?</p>
+                    </div>
+                </div>
+
+                <!-- Sarcasm Card -->
+                <div class="concept-card bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-semibold text-xl mb-2 flex items-center gap-2">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Sarcasm
+                    </h3>
+                    <p class="text-gray-600 mb-4">People say the opposite of what they mean. The AI has to detect the true (often negative) sentiment.</p>
+                     <div class="p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p class="font-mono text-red-800">"Oh great, more homework."</p>
+                        <p class="text-sm text-red-600 mt-2">The speaker is not actually happy.</p>
+                    </div>
+                </div>
+                
+                <!-- Figurative Language Card -->
+                <div class="concept-card bg-white p-6 rounded-xl shadow-md">
+                     <h3 class="font-semibold text-xl mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" /></svg>
+                        Figurative Language
+                    </h3>
+                    <p class="text-gray-600 mb-4">People use metaphors and idioms. The AI must learn the non-literal meaning.</p>
+                     <div class="p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p class="font-mono text-red-800">"She is a little rusty."</p>
+                        <p class="text-sm text-red-600 mt-2">She is out of practice, not made of metal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Core Concepts Section -->
+        <section id="concepts" class="mb-20 pt-16 -mt-16">
+            <h2 class="text-3xl font-bold text-center mb-10 flex items-center justify-center gap-3">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3" /></svg>
+                Core NLP Concepts
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tokenization Card -->
+                <details class="concept-card bg-white p-6 rounded-xl shadow-md cursor-pointer">
+                    <summary class="flex justify-between items-center font-semibold text-xl">Tokenization<svg class="w-5 h-5 transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></summary>
+                    <div class="mt-4 text-gray-600">
+                        <p class="mb-3"><strong class="text-gray-900">What it is:</strong> Breaking a sentence down into individual words or "tokens."</p>
+                        <p><strong class="text-gray-900">Analogy:</strong> The Lego Sorter. Before building, you sort all the Lego bricks into a pile. This is the first step for an AI to analyze a sentence.</p>
+                    </div>
+                </details>
+
+                <!-- Part-of-Speech Tagging Card -->
+                <details class="concept-card bg-white p-6 rounded-xl shadow-md cursor-pointer">
+                    <summary class="flex justify-between items-center font-semibold text-xl">Part-of-Speech Tagging<svg class="w-5 h-5 transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></summary>
+                    <div class="mt-4 text-gray-600">
+                        <p class="mb-3"><strong class="text-gray-900">What it is:</strong> Identifying the grammatical role of each word (e.g., noun, verb, adjective).</p>
+                        <p><strong class="text-gray-900">Analogy:</strong> The Grammar Detective. It's like putting a label on each Lego brick, specifying if it's a "thing brick" (noun) or an "action brick" (verb).</p>
+                    </div>
+                </details>
+                
+                <!-- Named Entity Recognition Card -->
+                <details class="concept-card bg-white p-6 rounded-xl shadow-md cursor-pointer">
+                    <summary class="flex justify-between items-center font-semibold text-xl">Named Entity Recognition<svg class="w-5 h-5 transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></summary>
+                     <div class="mt-4 text-gray-600">
+                        <p class="mb-3"><strong class="text-gray-900">What it is:</strong> Finding and categorizing key information like names, places, and dates.</p>
+                        <p><strong class="text-gray-900">Analogy:</strong> The Highlighter Pen. The AI scans the text and highlights important proper nouns, knowing that "Plato" is a Person and "Cyprus" is a Location.</p>
+                     </div>
+                </details>
+
+                <!-- Coreference Resolution Card -->
+                <details class="concept-card bg-white p-6 rounded-xl shadow-md cursor-pointer">
+                    <summary class="flex justify-between items-center font-semibold text-xl">Coreference Resolution<svg class="w-5 h-5 transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></summary>
+                     <div class="mt-4 text-gray-600">
+                        <p class="mb-3"><strong class="text-gray-900">What it is:</strong> Figuring out which words refer to the same person or object (e.g., linking "he" to "Plato").</p>
+                        <p><strong class="text-gray-900">Analogy:</strong> The Pronoun Detective. It connects the dots in a story, knowing that when a new sentence says "he," it's referring to the character mentioned before.</p>
+                     </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Sentence Analyzer -->
+        <section id="analyzer" class="mb-20 pt-16 -mt-16 bg-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-2 flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" /></svg>
+                Sentence Analyzer
+            </h2>
+            <p class="text-center text-gray-600 mb-6">Type a sentence to see how an AI breaks it down!</p>
+            <div class="flex flex-col md:flex-row gap-4">
+                <input id="sentence-input" type="text" placeholder="e.g., The happy dog saw Plato in Cyprus." class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                <button id="analyze-sentence-btn" class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors">Analyze Sentence</button>
+            </div>
+            <div id="sentence-output" class="mt-6 flex flex-wrap gap-2 p-4 bg-gray-100 rounded-lg min-h-[60px]"></div>
+        </section>
+
+        <!-- Sentiment Analyzer -->
+        <section id="sentiment" class="mb-20 pt-16 -mt-16 bg-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-2 flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Sentiment Analyzer
+            </h2>
+            <p class="text-center text-gray-600 mb-6">Check the emotional tone of a word or phrase.</p>
+            <div class="flex flex-col md:flex-row gap-4">
+                <input id="sentiment-input" type="text" placeholder="e.g., This is an amazing workshop." class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+                <button id="analyze-sentiment-btn" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">Analyze Sentiment</button>
+            </div>
+            <div id="sentiment-output" class="mt-6 text-center p-4 bg-gray-100 rounded-lg min-h-[80px] flex justify-center items-center">
+                 <p class="text-gray-500">Sentiment will be shown here.</p>
+            </div>
+        </section>
+
+        <!-- Prompt Builder -->
+        <section id="prompt-builder" class="pt-16 -mt-16 bg-white p-8 rounded-xl shadow-lg">
+             <h2 class="text-3xl font-bold text-center mb-2 flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                The Art of the Prompt: Prompt Builder
+            </h2>
+            <p class="text-center text-gray-600 mb-6">Fill in the boxes to create a detailed and effective prompt for an AI.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div><label for="prompt-role" class="block font-semibold mb-2">Persona / Role (Who is the AI?)</label><textarea id="prompt-role" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="e.g., You are a patient high school physics teacher..."></textarea></div>
+                <div><label for="prompt-context" class="block font-semibold mb-2">Context (What is the situation?)</label><textarea id="prompt-context" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="e.g., ...explaining a secret to a curious 5-year-old."></textarea></div>
+                <div><label for="prompt-task" class="block font-semibold mb-2">Task (What should the AI do?)</label><textarea id="prompt-task" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="e.g., Explain the idea that tiny particles can be in many places at once."></textarea></div>
+                <div><label for="prompt-format" class="block font-semibold mb-2">Format (How should it be presented?)</label><textarea id="prompt-format" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="e.g., Use a simple analogy involving a magical, disappearing cat. Keep it under 100 words."></textarea></div>
+            </div>
+             <div class="mt-6 text-center"><button id="generate-prompt-btn" class="bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors">Generate Prompt</button></div>
+             <div class="mt-6 relative"><h3 class="font-semibold text-lg mb-2">Your Generated Prompt:</h3><textarea id="prompt-output" readonly class="w-full p-4 bg-gray-100 border border-gray-200 rounded-lg h-48 resize-none"></textarea><button id="copy-prompt-btn" class="absolute top-10 right-2 bg-gray-300 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-400 text-sm">Copy</button><div id="copy-feedback" class="absolute top-10 right-2 bg-green-500 text-white px-3 py-1 rounded-md text-sm opacity-0 transition-opacity">Copied!</div></div>
+        </section>
+    </div>
+
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="container mx-auto py-6 px-4 text-center">
+            <p>&copy; 2024 NLP Workshop. All rights reserved.</p>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Back to top</a>
+        </div>
+    </footer>
+
+    <script>
+        // --- Simplified NLP Dictionaries ---
+        const wordCategories = {'Nouns': ['dog', 'cat', 'book', 'teacher', 'chicago', 'cyprus', 'workshop', 'car', 'train', 'friend', 'man', 'telescope', 'homework', 'plato', 'aristotle', 'greece'], 'Verbs': ['saw', 'is', 'was', 'am', 'are', 'go', 'eat', 'love', 'like', 'run', 'lived', 'leaves', 'explaining'], 'Adjectives': ['happy', 'sad', 'good', 'bad', 'green', 'amazing', 'curious', 'patient', 'warm', 'great', 'rusty'], 'Pronouns': ['he', 'she', 'it', 'they', 'i', 'you', 'we'], 'Entities': ['plato', 'gemini', 'aristotle', 'cyprus', 'chicago', 'greece'], 'Connectors': ['the', 'a', 'an', 'in', 'on', 'at', 'of', 'to', 'for', 'with', 'and', 'but', 'or', 'oh']};
+        const sentimentWords = {positive: ['happy', 'amazing', 'great', 'good', 'love', 'like', 'best', 'fantastic', 'excellent', 'warm', 'patient'], negative: ['sad', 'bad', 'hate', 'angry', 'fail', 'broken', 'rusty', 'terrible']};
+        const categoryColors = {'Nouns': 'bg-blue-100 text-blue-800 border-blue-300', 'Verbs': 'bg-green-100 text-green-800 border-green-300', 'Adjectives': 'bg-yellow-100 text-yellow-800 border-yellow-300', 'Pronouns': 'bg-pink-100 text-pink-800 border-pink-300', 'Entities': 'bg-purple-100 text-purple-800 border-purple-300', 'Connectors': 'bg-gray-200 text-gray-700 border-gray-300', 'Unknown': 'bg-red-100 text-red-800 border-red-300'};
+
+        // --- Sentence Analyzer Logic ---
+        const sentenceInput = document.getElementById('sentence-input');
+        const analyzeSentenceBtn = document.getElementById('analyze-sentence-btn');
+        const sentenceOutput = document.getElementById('sentence-output');
+
+        function analyzeSentence() {
+            const sentence = sentenceInput.value;
+            if (!sentence.trim()) return;
+            sentenceOutput.innerHTML = '';
+            const tokens = sentence.toLowerCase().replace(/[.,!?;]/g, '').split(' ');
+            tokens.forEach(token => {
+                if (!token) return;
+                let category = 'Unknown';
+                for (const cat in wordCategories) {
+                    if (wordCategories[cat].includes(token)) { category = cat; break; }
+                }
+                const tokenEl = document.createElement('div');
+                tokenEl.className = `p-2 rounded-md border text-sm font-medium ${categoryColors[category]}`;
+                const wordEl = document.createElement('span');
+                wordEl.className = 'font-bold text-base';
+                wordEl.textContent = token;
+                const categoryEl = document.createElement('span');
+                categoryEl.className = 'block text-xs uppercase';
+                categoryEl.textContent = category;
+                tokenEl.appendChild(wordEl);
+                tokenEl.appendChild(categoryEl);
+                sentenceOutput.appendChild(tokenEl);
+            });
+        }
+        analyzeSentenceBtn.addEventListener('click', analyzeSentence);
+        sentenceInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') analyzeSentence(); });
+
+        // --- Sentiment Analyzer Logic ---
+        const sentimentInput = document.getElementById('sentiment-input');
+        const analyzeSentimentBtn = document.getElementById('analyze-sentiment-btn');
+        const sentimentOutput = document.getElementById('sentiment-output');
+        
+        function analyzeSentiment() {
+            const text = sentimentInput.value.toLowerCase();
+            if(!text.trim()) return;
+            let score = 0;
+            const words = text.replace(/[.,!?;]/g, '').split(' ');
+            if (text.includes('great') && text.includes('homework')) { score = -1; } 
+            else { words.forEach(word => { if(sentimentWords.positive.includes(word)) score++; if(sentimentWords.negative.includes(word)) score--; }); }
+
+            let resultHTML = '';
+            let sentimentText = 'Neutral';
+            if (score > 0) { sentimentText = 'Positive'; resultHTML = `<div class="text-green-600"><span class="text-4xl mr-3">😊</span><span class="font-bold text-xl">${sentimentText}</span></div>`; }
+            else if (score < 0) { sentimentText = text.includes('great') ? 'Negative (Sarcasm Detected)' : 'Negative'; resultHTML = `<div class="text-red-600"><span class="text-4xl mr-3">😠</span><span class="font-bold text-xl">${sentimentText}</span></div>`;}
+            else { resultHTML = `<div class="text-gray-600"><span class="text-4xl mr-3">😐</span><span class="font-bold text-xl">${sentimentText}</span></div>`;}
+            sentimentOutput.innerHTML = resultHTML;
+        }
+        analyzeSentimentBtn.addEventListener('click', analyzeSentiment);
+        sentimentInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') analyzeSentiment(); });
+
+        // --- Prompt Builder Logic ---
+        const generatePromptBtn = document.getElementById('generate-prompt-btn');
+        const promptOutput = document.getElementById('prompt-output');
+        const copyPromptBtn = document.getElementById('copy-prompt-btn');
+        const copyFeedback = document.getElementById('copy-feedback');
+
+        generatePromptBtn.addEventListener('click', () => {
+            const role = document.getElementById('prompt-role').value;
+            const context = document.getElementById('prompt-context').value;
+            const task = document.getElementById('prompt-task').value;
+            const format = document.getElementById('prompt-format').value;
+            let fullPrompt = '';
+            if (role) fullPrompt += `## PERSONA / ROLE ##\n${role}\n\n`;
+            if (context) fullPrompt += `## CONTEXT ##\n${context}\n\n`;
+            if (task) fullPrompt += `## TASK ##\n${task}\n\n`;
+            if (format) fullPrompt += `## FORMAT / CONSTRAINTS ##\n${format}\n`;
+            promptOutput.value = fullPrompt.trim();
+        });
+
+        copyPromptBtn.addEventListener('click', () => {
+            if(!promptOutput.value) return;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = promptOutput.value;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            copyFeedback.classList.remove('opacity-0');
+            setTimeout(() => { copyFeedback.classList.add('opacity-0'); }, 2000);
+        });
+    </script>
+</body>
+</html>
